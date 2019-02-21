@@ -57,6 +57,16 @@ sed -i 's,DATA_PATH = .*,DATA_PATH = /opt/tests/%{name}/data,' tests/accountstes
 sed -i 's,/usr/bin/accountstest,/opt/tests/%{name}/accountstest,' tests/tests.xml
 
 %build
+
+echo "XYZZYXYZZYXYZZYXYZZYXYZZYXYZZYXYZZYXYZZYXYZZYXYZZYXYZZYXYZZY"
+echo
+pkg-config --exists glib-2.0
+pkg-config --cflags --libs glib-2.0
+cat /usr/lib/pkgconfig/glib-2.0.pc
+/usr/lib/qt5/bin/qmake -query
+echo
+echo "XYZZYXYZZYXYZZYXYZZYXYZZYXYZZYXYZZYXYZZYXYZZYXYZZYXYZZYXYZZY"
+
 %qmake5 CONFIG+=release
 make %{?_smp_mflags}
 
